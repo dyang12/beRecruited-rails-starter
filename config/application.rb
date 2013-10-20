@@ -38,5 +38,8 @@ module BeRecruitedInterview
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    #enable asset pipeline
+    config.assets.enabled = true
   end
 end

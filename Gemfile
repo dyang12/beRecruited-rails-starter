@@ -6,3 +6,8 @@ gem 'sqlite3'
 gem 'json'
 gem 'rest-client'
 
+#asset requirements
+gem 'sass'
+#not a good idea with heroku
+gem 'therubyracer'
+gem 'uglifier'

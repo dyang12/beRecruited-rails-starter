@@ -1,4 +1,4 @@
-class LeaderboardController < ApplicationController
+ class LeaderboardController < ApplicationController
   def index
     # TODO: Fetch team based on dropdown selection 
     # @team = ?

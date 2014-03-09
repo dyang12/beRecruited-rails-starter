@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,39 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110930231127) do
+ActiveRecord::Schema.define(:version => 20140309004225) do
 
   create_table "favorites", :force => true do |t|
-    t.integer  "user_api_id"
-    t.integer  "team_api_id"
-    t.integer  "current_amount"
-    t.integer  "last_week_amount"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "user_id",     :null => false
+    t.integer  "team_id",     :null => false
+    t.integer  "curr_points", :null => false
+    t.integer  "last_points", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
-
-  add_index "favorites", ["team_api_id"], :name => "index_favorites_on_team_api_id"
-  add_index "favorites", ["user_api_id", "team_api_id"], :name => "index_favorites_on_user_api_id_and_team_api_id"
-  add_index "favorites", ["user_api_id"], :name => "index_favorites_on_user_api_id"
 
   create_table "teams", :force => true do |t|
-    t.integer  "team_api_id"
-    t.string   "location"
-    t.string   "nickname"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "team_id",    :null => false
+    t.string   "location",   :null => false
+    t.string   "nickname",   :null => false
+    t.string   "abrev",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "teams", ["team_api_id"], :name => "index_teams_on_team_api_id"
 
   create_table "users", :force => true do |t|
-    t.integer  "user_api_id"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "username",     :null => false
+    t.integer  "total_points", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
-
-  add_index "users", ["user_api_id"], :name => "index_users_on_user_api_id"
 
 end

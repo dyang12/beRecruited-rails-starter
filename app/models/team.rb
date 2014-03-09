@@ -2,7 +2,7 @@ class Team < ActiveRecord::Base
   attr_accessible :team_id, :location, :nickname, :abrev
   
   validates :team_id, :location, :nickname, :abrev, :presence => true
-  validates :team_id, :location, :nickname, :abrev, :uniqueness => true
+  validates :team_id, :nickname, :abrev, :uniqueness => true
   
   has_many :favorites, 
     :class_name => "Favorite", 

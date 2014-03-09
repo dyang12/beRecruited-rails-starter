@@ -1,9 +1,11 @@
  class LeaderboardController < ApplicationController
+  include LeaderboardHelper
+  
   def index
-    # TODO: Fetch team based on dropdown selection 
-    # @team = ?
-
-    # TODO: Fetch top 5 leaders for this team
-    # @leaders = ?
+    populate_teams
+    populate_users
+    
+    @teams = Team.all
+    render :index
   end
 end

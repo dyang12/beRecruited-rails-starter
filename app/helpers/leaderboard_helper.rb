@@ -24,4 +24,17 @@ module LeaderboardHelper
                   :total_points => user_hash["points"])
     end
   end
+  
+  def populate_favorites
+    favorites = JSON.parse(RestClient.get("http://br-interview-api.heroku.com/favorites"))
+    
+    favorites.each do |favorite|
+      fav_hash = favorite["favorite"]
+      
+      Favorite.create(:user_id => fav_hash["user_id"], 
+                      :team_id => fav_hash["team_id"], 
+                      :curr_points => fav_hash["current_points"], 
+                      :last_points => fav_hash["last_week_points"])
+    end
+  end
 end

@@ -4,6 +4,8 @@ BeRecruitedInterview::Application.routes.draw do
   root :to => "leaderboard#index"
   
   resource :leaderboard
+  resources :teams, :only => [:show]
+  resources :favorites, :only => [:index]
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

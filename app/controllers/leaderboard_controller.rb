@@ -2,8 +2,11 @@
   include LeaderboardHelper
   
   def index
-    populate_teams
-    populate_users
+    if Team.count == 0
+      populate_teams
+      populate_users
+      populate_favorites
+    end
     
     @teams = Team.all
     render :index

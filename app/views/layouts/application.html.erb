@@ -10,5 +10,33 @@
   <%= yield %>
 
   <%= javascript_include_tag 'application' %>
+	<script>
+		$(document).ready(function() {
+			$("ul.team-list").on("click", "li", function(event)  {	
+				var id = $(event.currentTarget).attr("data-id");
+				
+				$.ajax({
+					url: "/teams/" + id,
+					type: "get",
+					success: function(data) {
+						$(".team-name").empty()
+						$(".team-name").html(data.team.nickname)
+					}
+				});
+		
+				$.ajax({
+					url: "/favorites/",
+					type: "get",
+					data: {
+						team_id: id
+					},
+					success: function(data) {
+						console.log(data)
+					}
+				});
+				
+			});
+		});
+	</script>
 </body>
 </html>

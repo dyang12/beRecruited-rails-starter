@@ -1,7 +1,8 @@
-	<div class="sidebar">
-		<ul class="team-list"></ul>
-		<h4>Teams<h4>
+<div class="sidebar">
+	<ul class="team-list">
+		<h4>Teams</h4>
 		<% @teams.each do |team| %>
-			<li><a href=""><%= team.abrev %></a></li>
+			<li data-id="<%= team.id %>"><%= team.abrev %></li>
 		<% end %>
-	</div>
+	</ul>
+</div>

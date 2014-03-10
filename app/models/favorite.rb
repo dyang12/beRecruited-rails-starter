@@ -14,6 +14,25 @@ class Favorite < ActiveRecord::Base
       :foreign_key => :team_id
   
   def self.top(team, limit = TOP_LIMIT)
-    # TODO: Given a team, return the top n users
+    leaderboard_query = <<-SQL
+      SELECT
+        u.username, f.curr_points, f.last_points
+      FROM
+        users u
+      JOIN (
+        SELECT
+          *
+        FROM
+          favorites
+        WHERE 
+          favorites.team_id = :team_id
+        ORDER BY
+          favorites.curr_points DESC
+        LIMIT 5
+      ) f
+      ON u.user_id = f.user_id
+    SQL
+    
+    leaders = User.find_by_sql([leaderboard_query, {:team_id => team.team_id}])
   end
 end

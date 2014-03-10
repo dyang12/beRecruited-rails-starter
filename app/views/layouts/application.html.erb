@@ -31,7 +31,19 @@
 						team_id: id
 					},
 					success: function(data) {
-						console.log(data)
+						$(".leaderboard").empty();
+						var table = "<tr><th>Username</th>" +
+											"<th>This Week\'s Points</th>" +
+											"<th>Last Week\'s Points</th></tr>";
+											
+						for(var i=0; i < data.length; i++) {
+							var user = data[i]["user"];
+							table = table.concat("<tr><td>" + user["username"] + 
+																	 "</td><td>" + user["curr_points"] +
+																	 "</td><td>" + user["last_points"] +
+																	 "</td></tr>");
+						}
+						$(".leaderboard").html(table);
 					}
 				});
 				

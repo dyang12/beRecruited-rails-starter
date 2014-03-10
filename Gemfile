@@ -26,3 +26,4 @@ group :production, :staging do
 end
 
 gem 'jquery-rails'
+gem 'ejs'
